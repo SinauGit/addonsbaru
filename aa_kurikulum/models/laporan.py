@@ -184,7 +184,11 @@ class RekapRapot(models.Model):
     def name_get(self):
         result = []
         for o in self:
+<<<<<<< HEAD
             name = "Rekap Rapot - {} - {}".format(o.mapel_id.name, o.class_id.name)
+=======
+            name = "Rekap Rapot - {} - {}".format(o.mapel_id.name,  o.date)
+>>>>>>> 204a9a16333ea1c6b8af6c7ce7a766c7d3fc4ff6
             result.append((o.id, name))
         return result
 
