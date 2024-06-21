@@ -9,6 +9,7 @@
     'website': "https://lui.co.id/",
     'depends': [ 'base', 'project', 'sale_timesheet',],
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',     # File hak akses
         'views/jadwal_konseling.xml',   # File yang mendefinisikan views dan menuitem
     ],

@@ -7,13 +7,14 @@
     'author': 'Muhammad Azis - 087881071515',
     'company': 'Ismata Nusantara Abadi',
     'website': "https://www.ismata.co.id",
-    'depends': ['base', 'mail', 'hr', 'fiscal_year_sync_app', 'website', 'calendar', 'contacts'],
+    'depends': ['base',  'mail', 'hr', 'fiscal_year_sync_app', 'website', 'calendar', 'contacts'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
         'wizard/wizard_view.xml',
         'views/sekolah_view.xml',
         'views/orangtua_view.xml',
+        'views/gurumapel_view.xml',
         
         # 'report/report_laporan_bulanan.xml',
         # 'report/report.xml',

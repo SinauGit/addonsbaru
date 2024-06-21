@@ -4,7 +4,7 @@
   
         <menuitem name="Notulensi"
             id="menu_main_pm"
-            groups="project.group_project_manager,project.group_project_user"
+            groups="base_sekolah.group_sekolah_admin"
             web_icon="rash_notulensi,static/description/notulensi.png"
             sequence="50"/>
 

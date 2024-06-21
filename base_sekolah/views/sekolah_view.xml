@@ -134,6 +134,81 @@
 			<field name="res_model">mata.pelajaran</field>
 		</record>
 
+
+		<!-- Kamar -->
+
+		<record id="view_master_kamar_tree" model="ir.ui.view">
+			<field name="name">master.kamar.tree</field>
+			<field name="model">master.kamar</field>
+			<field name="arch" type="xml">
+				<tree string="Kamar">
+					<field name="urut" />
+					<field name="lembaga" />
+					<field name="grade" />
+					<field name="class_id" />
+					<field name="guru_id" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_master_kamar_form" model="ir.ui.view">
+			<field name="name">master.kamar.form</field>
+			<field name="model">master.kamar</field>
+			<field name="arch" type="xml">
+				<form string="Kamar">
+					<sheet>
+						<group>
+							<field name="urut" />
+							<field name="lembaga" />
+							<field name="grade" />
+							<field name="class_id" />
+							<field name="guru_id" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_master_kamar_form">
+			<field name="name">Kamar</field>
+			<field name="res_model">master.kamar</field>
+		</record>
+
+
+		<!-- Kamar Siswa -->
+
+		    <record id="kamar_siswa_tree" model="ir.ui.view">
+            <field name="name">Kamar Siswa</field>
+            <field name="model">kamar.siswa</field>
+            <field name="arch" type="xml">
+                <tree string="">
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="kamar_siswa_form" model="ir.ui.view">
+            <field name="name">Kamar Siswa</field>
+            <field name="model">kamar.siswa</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group string="Kamar Siswa">
+                            
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>    
+
+        <record id="kamar_siswa_action" model="ir.actions.act_window">
+            <field name="name">Kamar Siswa</field>
+            <field name="res_model">kamar.siswa</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
 		<!-- Siswa -->
 
 		<record id="view_murid_tree" model="ir.ui.view">
@@ -417,6 +492,10 @@
 
 		<menuitem id="menu_config_submenu_sekolah" parent="menu_pendidikan_config" name="Sekolah"
 			sequence="1" />
+		<menuitem id="menu_kamar" name="Kamar" parent="menu_config_submenu_sekolah"
+			action="action_master_kamar_form" sequence="1"/>
+		<menuitem id="menu_kamar_santri" name="Kamar Santri" parent="menu_config_submenu_sekolah"
+			action="kamar_siswa_action" sequence="2"/>
 		<menuitem id="menu_master_kelas" name="Rombel" parent="menu_config_submenu_sekolah"
 			action="action_master_kelas_form" />
 		<menuitem id="menu_ruang_kelas" name="Siswa Rombel" parent="menu_config_submenu_sekolah"

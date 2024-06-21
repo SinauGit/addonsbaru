@@ -45,10 +45,9 @@
             <field name="type">ir.actions.act_window</field>
         </record>        
 
-    </data>
-
-		<menuitem id="menu_security_root" name="Security" web_icon="rash_security,logo/security.png"/>
+		<menuitem id="menu_security_root" name="Security" web_icon="rash_security,logo/security.png" groups ="group_security_satpam"/>
         <menuitem id="sub_menu_surat_kepegawaian" name="Surat Kepegawaian" parent="menu_security_root" action="model_surat_kepegawaian_action" />
 
+    </data>
 </odoo>
 

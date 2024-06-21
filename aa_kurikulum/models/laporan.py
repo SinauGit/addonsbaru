@@ -34,17 +34,16 @@ class laporan_bulanan(models.Model):
         _name = 'laporan.bulanan'
         
         
-        name = fields.Char('Nomor', default='New', required=True, readonly=True)
+        nama_laporan = fields.Char('Nomor', default='New', readonly=True)
         guru_id = fields.Many2one('hr.employee', string='Wali Kelas',related='class_id.guru_id')
         # guru_id = fields.Char('Wali kelas', related='class_id.guru_id')
         class_id = fields.Many2one('master.kelas', string='Group By', required=True)
         operator_id = fields.Many2one('hr.employee', string='Operator')
         
-        komponen_line = fields.One2many('laporan.yayasan', 'laporan_id', string='Komponen')
-        komponen_id = fields.Many2one('laporan.yayasan', string='komponen')
+        komponen_line = fields.One2many('laporan.yayasan', 'laporan_id', string='Siswa')
+        komponen_id = fields.Many2one('laporan.yayasan', string='Siswa')
         nisq = fields.Char('NISQ', related='komponen_id.nisq')
         
-        tanggal_input = fields.Date('Tanggal Input') 
         tanggal_cetak = fields.Date('Tanggal Cetak', readonly=False, default=fields.Date.today)
         filename = fields.Char(string='Filename')
         data = fields.Binary(string='Data')
@@ -64,9 +63,9 @@ class laporan_bulanan(models.Model):
             self.write({'data': binascii.b2a_base64(pdf_data),'filename': judul})
 
             return {
-            'type': 'ir.actions.act_url',
-            'url': '/web/content/{}/data/{}?download=true'.format(self.id, judul),
-            'target': 'self',
+            # 'type': 'ir.actions.act_url',
+            # 'url': '/web/content/{}/data/{}?download=true'.format(self.id, judul),
+            # 'target': 'self',
         }
         
         @api.model
@@ -95,8 +94,8 @@ class RekapLaporanBulanan(models.Model):
     siswa_id = fields.Many2one('res.partner', string='Nama Santri', domain="[('student', '=', True)]")
     bulanan_id = fields.Many2one('laporan.bulanan', string='Laporan Bulanan')
     data = fields.Binary(string='Data')
-    # attachment_ids = fields.Many2many(
-    #     'ir.attachment', string="File Laporan Bulanan", copy=False)
+    attachment_ids = fields.Many2many(
+        'ir.attachment', string="File Laporan Bulanan", copy=True)
     
     
     @api.multi
@@ -116,9 +115,11 @@ class RekapRapot(models.Model):
     guru_id = fields.Many2one('hr.employee', string='Nama Guru')
     # mapel = fields.Char(string='Mata Pelajaran', related='guru_id.job_id.name')
     mapel_id = fields.Many2one('mata.pelajaran',string='Mata Pelajaran')
-    tgl_input = fields.Date('Tanggal Input', default=fields.Date.context_today)
+    tgl_input = fields.Char(string='Tanggal dan Waktu', default=lambda self: fields.Datetime.now())
     # mapel_id = fields.Many2one('hr.employee', string='Mata Pelajaran', related='guru_id.job_id')
     class_id = fields.Many2one('master.kelas', string='Rombel', required=True)
+    tanggal_jam = fields.Datetime(string='Tanggal dan Jam', default=fields.Datetime.now())
+
     
     kkm = fields.Integer('KKM')
     # rombel_id = fields.Many2one('ruang.kelas', string='Rombel')
@@ -127,6 +128,7 @@ class RekapRapot(models.Model):
     total = fields.Integer('Total', compute="_compute_total")
     total_line = fields.Integer('Total Line', compute="_compute_total_line")
     rata = fields.Integer('Rata', compute="_compute_rata")
+    date = fields.Date('Tanggal Cetak')
     
     
     @api.onchange('class_id')
@@ -182,7 +184,7 @@ class RekapRapot(models.Model):
     def name_get(self):
         result = []
         for o in self:
-            name = "Rekap Rapot - {} ({})".format(o.mapel_id.name, o.class_id.lembaga)
+            name = "Rekap Rapot - {} - {}".format(o.mapel_id.name, o.class_id.name)
             result.append((o.id, name))
         return result
 
@@ -231,8 +233,3 @@ class Jadwal_Pelajaran(models.Model):
             name = "Jadwal Pelajaran - {}".format(o.mapel_id)
             result.append((o.id, name))
         return result
-    
-    
-    
-        
-       

@@ -2,8 +2,8 @@
 <openerp>
 	<data>
 
-	<menuitem id="menu_guru_mapel" name="Modul Guru Mapel" web_icon="rash_guru_mapel,static/description/gurumapel.png"/>
-	<menuitem id="menu_murid" parent="menu_guru_mapel" name="Data Master Siswa" action="base_sekolah.action_murid_form" sequence="1"/>
+	<menuitem id="menu_guru_mapel" name="Modul Guru Mapel" web_icon="rash_guru_mapel,static/description/gurumapel.png" groups="base_sekolah.group_sekolah_admin" />
+	<menuitem id="menu_murid" parent="menu_guru_mapel" name="Data Master Siswa" action="base_sekolah.action_portal_gurumapel_form" sequence="1"/>
 
 	<menuitem id="menu_kurikulum" name="Kurikulum" parent="menu_guru_mapel" groups="aa_kurikulum.group_kurikulum_admin" sequence="2"/>
 
@@ -21,7 +21,7 @@
 
 
 
-	<menuitem id="menu_pendidikan_config" name="Konfigurasi" parent="menu_guru_mapel" sequence="3" groups="base_sekolah.group_sekolah_admin" />
+	<menuitem id="menu_pendidikan_config" name="Konfigurasi" parent="menu_guru_mapel" sequence="3"/>
     
     <menuitem id="menu_laporan_menu_bulanan" name="Laporan Bulanan" parent="menu_pendidikan_config" action="aa_kurikulum.model_bulanan_action" sequence="1"/> 
 

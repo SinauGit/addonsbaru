@@ -104,8 +104,6 @@ requests-toolbelt==0.9.1
 roman==3.3
 six==1.10.0
 sqlite-bro==0.8.11
-suds-jurko==0.6
-sympy==1.9
 toolz==0.8.2
 tornado==6.1
 traitlets==4.3.3

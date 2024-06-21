@@ -71,7 +71,25 @@ class mata_pelajaran(models.Model):
     urut = fields.Integer('No. Urut', required=True)
     name = fields.Char('Nama', required=True)
     lembaga = fields.Selection(lembaga, string='Lembaga', required=True)
-    
+
+class kamar(models.Model):
+    _name = 'master.kamar'
+    _description = 'Kamar'
+
+    urut = fields.Integer('No. Urut', required=True)
+    lembaga = fields.Selection(lembaga, string='Lembaga', required=True, default='SMP')
+    grade = fields.Selection([
+                            ('A', 'A'), ('B', 'B'),
+                            ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'),
+                            ('7', '7'), ('8', '8'), ('9', '9'),
+                            ('10', '10'), ('11', '11'), ('12', '12')
+                            ], string='Grade', required=True)
+    class_id = fields.Many2one('master.kelas', string='Rombel', required=True)
+    guru_id = fields.Many2one('hr.employee', string='Nama Halaqah')
+
+class KamarSiswa(models.Model):
+    _name = 'kamar.siswa'
+    _description = 'Kamar Siswa'    
 
 class ruang_kelas(models.Model):
     _name = 'ruang.kelas'
@@ -234,17 +252,18 @@ class res_partner(models.Model):
     bk_id = fields.Many2one('bimbingan.konseling', string='Bimbingan Konseling Absen')
     bk_1_id = fields.Many2one('konseling.pelanggaran', string='Bimbingan Konseling Pelanggaran')
     bk_2_id = fields.Many2one('konseling.layanan', string='Bimbingan Konseling Layanan')
-    rekap_id = fields.Many2one('rekap.rapot', string='Buku Raport')
+    rekap_id = fields.Many2one('buku.rapot', string='Buku Raport')
+
     
     orang_user_id = fields.Many2one('res.users', string='Nama Orang Tua')
 
-    # @api.constrains('orangtua_id')
-    # def _check_parent_access(self):
-    #     for record in self:
-    #         orangtua_siswa = record.orangtua_id.parent_id
-    #         orangtua_login = self.env.user.partner_id
-    #         if orangtua_siswa != orangtua_login:
-    #             raise models.ValidationError(_("Anda hanya bisa membuka form siswa anak Anda."))
+    @api.constrains('orangtua_id')
+    def _check_parent_access(self):
+        for record in self:
+            orangtua_siswa = record.orangtua_id.parent_id
+            orangtua_login = self.env.user.partner_id
+            if orangtua_siswa != orangtua_login:
+                raise models.ValidationError(_("Anda hanya bisa membuka form siswa anak Anda."))
     
 
     # sodara = fields.Boolean('Saudara')

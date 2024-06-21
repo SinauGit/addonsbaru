@@ -4,7 +4,7 @@
   
         <menuitem name="Jadwal Konseling"
             id="menu_main_pm"
-            groups="project.group_project_manager,project.group_project_user"
+            groups="group_jadwal_konseling"
             web_icon="rash_jadwalkonseling,static/description/jadwalkonseling.png"
             sequence="50"/>
 

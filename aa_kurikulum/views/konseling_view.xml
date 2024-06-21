@@ -298,9 +298,7 @@
 
     <record id="rekap_bulanan_action" model="ir.actions.act_window">
         <field name="name">Rekap Laporan Bulanan</field>
-        <field name="res_model">laporan.bulanan</field>
-        <!-- <field name="view_type">form</field> -->
-        
+        <field name="res_model">rekap.laporan.bulanan</field>   
         <field name="view_mode">tree,form</field>
         <field name="type">ir.actions.act_window</field>
 
@@ -342,6 +340,7 @@
 
     <menuitem id="menu_laporan_menu_bulanan" name="Laporan Bulanan" parent="menubar_portal_kurikulum"
         action="rekap_bulanan_action" sequence="1"/> 
+        
 
 
     <!-- <menuitem id="menu_config_submenu_orang_tua" name="Menu Orang Tua"
@@ -350,7 +349,7 @@
         <menuitem id="menu_administrator" name="Administrasi" parent="menu_config_submenu_orang_tua"
         action="base_sekolah.action_murid_form" /> 
 
-        <menuitem id="menu_laporan_bulanan" name="Laporan Bulanan" parent="menu_config_submenu_orang_tua"
+        <menuitem id="menu_laporan_bulanan" name="Laporan Bulanan" parent="base_sekolah.menu_config_submenu_orang_tua"
         action="rekap_bulanan_action" /> 
         
         <menuitem id="menu_raport" name="Raport" parent="menu_config_submenu_orang_tua"

@@ -60,7 +60,7 @@ access_laporan_yayasan_user,aa_kurikulum.laporan.yayasan,model_laporan_yayasan,b
 access_laporan_bulanan_user,aa_kurikulum.laporan.bulanan,model_laporan_bulanan,base_sekolah.group_sekolah_admin,1,1,1,1
 
 
-access_rekap_laporan_bulanan_user,aa_kurikulum.rekap.laporan.bulanan,model_rekap_laporan_bulanan,base_sekolah.group_sekolah_admin,1,1,1,1
+access_rekap_laporan_bulanan_user,aa_kurikulum.rekap.laporan.bulanan,model_rekap_laporan_bulanan,base_sekolah.group_sekolah_orangtua,1,1,1,1
 access_rekap_rapot_user,aa_kurikulum.rekap.rapot,model_rekap_rapot,base.group_user,1,1,1,1
 access_rekap_rapot_line_user,aa_kurikulum.rekap.rapot.line,model_rekap_rapot_line,base.group_user,1,1,1,1
 access_jadwal_pelajaran_user,aa_kurikulum.jadwal.pelajaran,model_jadwal_pelajaran,base.group_user,1,1,1,1

@@ -65,7 +65,7 @@
     'support': 'sales@ksolves.com',
     'images': ['static/description/new_banner.gif'],
 
-    'depends': ['base', 'web', 'base_setup'],
+    'depends': ['base', 'base_sekolah', 'web', 'base_setup'],
 
     'data': [
         'security/ir.model.access.csv',

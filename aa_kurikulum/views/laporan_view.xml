@@ -71,11 +71,10 @@
         <field name="model">laporan.bulanan</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name" />
+                <field name="nama_laporan" />
                 <field name="guru_id" />
                 <field name="class_id" />
                 <field name="operator_id" />
-                <field name="tanggal_input" />
                 <field name="tanggal_cetak" />
                 <field name="filename" invisible="1"/>
 				<field name="data" filename="filename" widget="binary"/>
@@ -88,12 +87,12 @@
         <field name="model">laporan.bulanan</field>
         <field name="arch" type="xml">
             <form string="Laporan Bulanan">
-                <!-- <header>
+                <header>
                     <button string="laporan Bulanan" name="action_print_laporan" type="object" class="oe_highlight"/>
-                </header> -->
+                </header>
                 <sheet>
                     <group>
-                        <field name="name" />
+                        <field name="nama_laporan"/>
                         <field name="class_id" />
                         <field name="guru_id" />
                         <field name="operator_id" />
@@ -135,9 +134,6 @@
                         </field> -->
                     </group>
                     <group col="4" colspan="4">
-                        <field name="tanggal_input" />
-                    </group>
-                    <group col="4" colspan="4">
                         <field name="tanggal_cetak" />
                     </group>
                    
@@ -167,7 +163,8 @@
     </record> -->
 
     <record id="model_bulanan_action" model="ir.actions.act_window">
-        <field name="name">Laporan bulanan</field>
+        <field name="name">Laporan Bulanan</field>
+        <field name="type">ir.actions.act_window</field>
         <field name="res_model">laporan.bulanan</field>
         <field name="view_mode">tree,form</field>
     </record>
@@ -182,6 +179,7 @@
                 <field name="guru_id" />
                 <field name="mapel_id" options="{'no_open': True}" string="Mata Pelajaran"/>
                 <field name="class_id" />
+                <field name="tanggal_jam" />
                 <!-- <field name="kkm" /> -->
                 <field name="tahun_id" />
             </tree>
@@ -198,6 +196,7 @@
                         <field name="guru_id" />
                         <field name="mapel_id"/>
                         <field name="class_id" />
+                        <field name="tanggal_jam" />
                         <field name="kkm" />
                         <field name="tahun_id" />
                         <notebook colspan="5">
